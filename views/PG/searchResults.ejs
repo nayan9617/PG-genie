@@ -1,0 +1,37 @@
+<% layout('layout/boilerplate') %>
+<div class="container">
+    <h2 class="mb-4">Search Results for "<%= query %>"</h2>
+    <div class="row">
+        <% if (pgResults.length > 0) { %>
+            <% pgResults.forEach(pg => { %>
+                <div class="card mb-3">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <% if (pg.images.length) { %>
+                                <img crossorigin="anonymous" src="<%= pg.images[0].url %>" alt="" class="img-fluid">
+                            <% } else{ %>
+                                <img crossorigin="anonymous" src="https://res.cloudinary.com/dqwsuokwl/image/upload/v1736588613/PGBuddy/x7qlzfw6hnnqva0vo2w9.jpg" alt="" class="img-fluid"> 
+                            <% } %>
+    
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title mb-1"><%= pg.title %></h5>
+                                <p class="card-text mb-0"><%= pg.description %></p>
+                                <p class="card-text mb-2">
+                                    <small class="text-muted"><%= pg.location %></small>
+                                </p>
+                                <p class="card-text mb-1">&#8377; <%= pg.price %>/month</p>
+                                <a href="/PG/<%= pg._id %>" class="btn btn-primary">View <%= pg.title %></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            <% }) %>
+        <% } else { %>
+            <p>No PGs found for your search query.</p>
+        <% } %>
+    </div>
+    <a href="/PG" class="btn btn-secondary mb-3">Back to all PG</a>
+</div>

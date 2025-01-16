@@ -1,0 +1,95 @@
+<% layout('./layout/boilerplate') %>
+    <div class="row ">
+        <h1 class="text-center">New PG</h1>
+        <div class="col-md-6 offset-md-3">
+            <form action="/PG" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
+                <div class="mb-3"> 
+                    <label class="form-label" for="title">Title</label>
+                    <input class="form-control" type="text" id="title" name="PG[title]" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="mb-3"> 
+                    <label class="form-label" for="location">Location</label>
+                    <input class="form-control" type="text" id="location" name="PG[location]" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="price">Monthly Rent</label>
+                    <div class="input-group">
+                        <span class="input-group-text" id="price-label">&#8377</span>
+                        <input type="text" class="form-control" placeholder="0.00" name="PG[price]" aria-label="price" aria-describedby="price-label" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                </div>
+                <!-- Amenities Switches -->
+                <label class="form-label">Amenities</label>
+                <div class="input-group mb-3 row">
+                    <div class="col-md-4 col-lg-4">
+                        <div class="form-check form-switch ">
+                            <input class="form-check-input" type="checkbox" id="furniture" name="PG[furniture]">
+                            <label class="form-check-label" for="furniture">Furniture</label>
+                        </div>
+                        <div class="form-check form-switch ">
+                            <input class="form-check-input" type="checkbox" id="attachedBath" name="PG[attachedBath]">
+                            <label class="form-check-label" for="attachedBath">Attached Bath</label>
+                        </div>
+                        <div class="form-check form-switch ">
+                            <input class="form-check-input" type="checkbox" id="waterSupply" name="PG[waterSupply]">
+                            <label class="form-check-label" for="waterSupply">24/7 Water Supply</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-lg-4">
+                        <div class="form-check form-switch ">
+                            <input class="form-check-input" type="checkbox" id="geyser" name="PG[geyser]">
+                            <label class="form-check-label" for="geyser">Geyser</label>
+                        </div> 
+                        <div class="form-check form-switch ">
+                            <input class="form-check-input" type="checkbox" id="wifi" name="PG[wifi]">
+                            <label class="form-check-label" for="wifi">Wi-Fi</label>
+                        </div>
+                        <div class="form-check form-switch ">
+                            <input class="form-check-input" type="checkbox" id="backupPower" name="PG[backupPower]">
+                            <label class="form-check-label" for="backupPower">Backup Power</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-lg-4">
+                        <div class="form-check form-switch ">
+                            <input class="form-check-input" type="checkbox" id="cctv" name="PG[cctv]">
+                            <label class="form-check-label" for="cctv">CCTV</label>
+                        </div>
+                        <div class="form-check form-switch ">
+                            <input class="form-check-input" type="checkbox" id="washingMachine" name="PG[washingMachine]">
+                            <label class="form-check-label" for="washingMachine">Washing Machine</label>
+                        </div>
+                        <div class="form-check form-switch ">
+                            <input class="form-check-input" type="checkbox" id="petFriendly" name="PG[petFriendly]">
+                            <label class="form-check-label" for="petFriendly">Pet Friendly</label>
+                        </div>
+                    </div>
+                </div> 
+                <div class="mb-3"> 
+                    <label class="form-label" for="description">Description</label>
+                    <textarea class="form-control" type="text" id="description" name="PG[description]" required></textarea>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="image" class="form-label">Add Photos</label>
+                    <input class="form-control" type="file" name="image" id="image" multiple>
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-success">Add PG</button>
+                </div>
+            </form>
+            <a href="/PG">Back to all PG</a>
+        </div>
+    </div>
+
+

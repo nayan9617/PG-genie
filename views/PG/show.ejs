@@ -1,0 +1,140 @@
+<% layout('./layout/boilerplate') %>
+<link rel="stylesheet" href="/stylesheets/stars.css">
+    <div class="row mb-5">
+        <div class="col-6">
+          <div id="pgCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <% pg.images.forEach((img, i) => { %>
+                <div class="carousel-item <%= i===0 ? 'active' : '' %>">
+                  <img crossorigin="anonymous" src="<%= img.url %>" class="d-block w-100 rounded-top-2" style="height:450px;" alt="">
+                </div>
+              <% }) %>
+            </div>
+            <% if (pg.images.length > 1) { %>
+            <button class="carousel-control-prev" type="button" data-bs-target="#pgCarousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#pgCarousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+            <% } %>
+          </div>
+            <div class="card mb-3">
+                <div class="card-body">
+                  <h4 class="card-title"><%= pg.title %></h4>
+                  <p class="card-text"><%= pg.description %></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item text-muted"><%= pg.location %></li>
+                  <li class="list-group-item">
+                    <span class="me-2">Host - <%= pg.owner.name %>,</span>
+                    <span>Phone: +91 <%= pg.owner.phone %></span></li>
+                  <li class="list-group-item">&#8377;<%= pg.price %>/month</li>
+                </ul>
+                
+                <ul class="list-group list-group-flush">
+                  <% if (((pg.furniture || pg.attachedBath )||(pg.washingMachine || pg.petFriendly))||(( pg.waterSupply || pg.geyser )|| (pg.wifi || pg.backupPower ))) { %>
+                  <div class="my-2 mx-3 p-1">
+                    <h6 class="card-text">Amenities:</h6>
+                    <% if (pg.furniture) { %>
+                        <li class="card-text text-muted mx-3 my-0">Furniture</li>
+                    <% } %>
+                    <% if (pg.attachedBath) { %>
+                        <li class="card-text text-muted mx-3 my-0">Attached Bathroom</li>
+                    <% } %>
+                    <% if (pg.waterSupply) { %>
+                        <li class="card-text text-muted mx-3 my-0">24/7 Water Supply</li>
+                    <% } %>
+                    <% if (pg.geyser) { %>
+                        <li class="card-text text-muted mx-3 my-0">Geyser / Hot Water</li>
+                    <% } %> 
+                    <% if (pg.wifi) { %>
+                        <li class="card-text text-muted mx-3 my-0">Wi-Fi</li>
+                    <% } %>
+                    <% if (pg.backupPower) { %>
+                        <li class="card-text text-muted mx-3 my-0">Backup Power (Inverter)</li>
+                    <% } %>
+                    <% if (pg.cctv) { %>
+                        <li class="card-text text-muted mx-3 my-0">CCTV</li>
+                    <% } %>
+                    <% if (pg.washingMachine) { %>
+                        <li class="card-text text-muted mx-3 my-0">Washing Machine</li>
+                    <% } %>
+                    <% if (pg.petFriendly) { %>
+                        <li class="card-text text-muted mx-3 my-0">Pet Friendly</li>
+                    <% } %>
+                  </div>
+                  <% } %>
+                </ul>
+            
+          
+                <% if (currentUser && pg.author.equals(currentUser._id)){ %>
+                <div class="card-body">
+                  <a href="/PG/<%= pg._id%>/edit" class="card-link btn btn-primary">Edit</a>
+                  <form class="d-inline" action="/PG/<%= pg._id%>?_method=DELETE" method="POST">
+                    <button class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
+                <% } %>
+                <div class="card-footer text-muted">
+                  Posted by - <%= pg.author.username %>
+                </div> 
+              </div>
+        </div>
+        <div class="col-6">
+          <div id="map" class="mb-3 rounded-2"></div>
+          <% if (currentUser){ %>
+          <form action="/PG/<%= pg._id%>/reviews" method="POST" class="validated-form mb-3" novalidate>
+            <h2 class="text-muted">Leave a Review</h2>
+            <div class="my-3">
+              <fieldset class="starability-basic">
+                <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked aria-label="No rating." />
+                <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+                <label for="first-rate1" title="Terrible">1 star</label>
+                <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+                <label for="first-rate2" title="Not good">2 stars</label>
+                <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+                <label for="first-rate3" title="Average">3 stars</label>
+                <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+                <label for="first-rate4" title="Very good">4 stars</label>
+                <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+                <label for="first-rate5" title="Amazing">5 stars</label>
+              </fieldset>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="body">Review Text</label>
+              <textarea class="form-control" name="review[body]" id="body" cols="30" rows="3" required></textarea>
+              <div class="valid-feedback">
+                Looks good!
+              </div>
+            </div>
+            <button class="btn btn-success">Submit</button>
+          </form>
+          <% } %>
+          <% for (let review of pg.reviews ) { %>
+            <div class="card mb3 mt-3">
+              <div class="card-body">
+                <h5 class="card-title mb-2"><%= review.author.username  %></h5>
+                <p class="starability-result" data-rating="<%= review.rating %>">
+                  Rated: <%= review.rating %> stars
+                </p>
+                <p class="card-text"><%= review.body %></p>
+                <% if (currentUser && review.author.equals(currentUser._id)){ %>
+                <form action="/PG/<%= pg._id%>/reviews/<%= review._id%>?_method=DELETE" method="POST">
+                  <button class="btn btn-danger sm">Delete</button>
+                </form>
+                <% } %>
+              </div>
+            </div>
+          <% } %>
+        </div>
+    </div>
+
+
+<script>
+  const maptilerApiKey = '<%- process.env.MAPTILER_API_KEY %>';
+  const pg = <%- JSON.stringify(pg) %>
+</script>
+<script src="/javascripts/showPageMap.js"></script>
