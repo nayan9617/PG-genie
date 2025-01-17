@@ -20,7 +20,6 @@ const PGroutes = require('./routes/PG.js');
 const reviewsRoutes = require('./routes/reviews.js');
 const MongoStore = require('connect-mongo');
 const dbUrl = process.env.DB_URL;
-// const dbUrl = 'mongodb://localhost:27017/find-my-pg';
 
 mongoose.connect(dbUrl);
 
@@ -43,7 +42,7 @@ app.use(mongoSanitize({replaceWith: '_'}));
 
 const store = MongoStore.create({
     mongoUrl: dbUrl,
-    touchAfter: 24 * 60 * 60, //in seconds
+    touchAfter: 24 * 60 * 60, 
     crypto: {
         secret: process.env.SECRET
     }
@@ -55,15 +54,15 @@ store.on("error", function(e){
 
 
 const sessionConfig = {
-    store, // means store = store
+    store, 
     name: 'schemas',
     secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
     cookie: {
         httpOnly: true,
-        // secure: true, enable this is in deployment
-        expires: Date.now() + 1000 * 60 * 60 * 24 * 7, // both in milliseconds
+        secure: true, 
+        expires: Date.now() + 1000 * 60 * 60 * 24 * 7, 
         maxAge: 1000 * 60 * 60 * 24 * 7,
     }
 }

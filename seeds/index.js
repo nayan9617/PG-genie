@@ -23,7 +23,7 @@ const seedDB = async() => {
         const random1467 = Math.floor(Math.random() * 40);
         const price = Math.floor(Math.random() * 3000) + 3000;
         const p = new Pg({
-            author: '67701b6a5d806bf81bf59e87',
+            author: '6785704587933c69b48b1704',
             location: `${cities[random1467].city}, ${cities[random1467].state}`,
             owner: {
               name: 'Anonymous',
@@ -91,5 +91,6 @@ const seedDB = async() => {
     }
 }
 seedDB().then(() => {
+    console.log("database seeded successfully")
     mongoose.connection.close();
 });
