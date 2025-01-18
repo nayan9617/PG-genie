@@ -8,3 +8,20 @@
     width: 100%;
     height: 300px;
 }
+
+.carousel-image {
+    height: 450px; /* Default height */
+  }
+  
+  /* Adjust the height for smaller screens */
+  @media (max-width: 768px) {
+    .carousel-image {
+      height: 300px; /* Smaller height for tablets */
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .carousel-image {
+      height: 200px; /* Smaller height for mobile phones */
+    }
+  }
