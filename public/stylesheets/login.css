@@ -9,7 +9,7 @@
     min-height: 100vh;
 }
 .side-image{
-    background-image: url("/images/raymond-petrik-bPl-NQE_cPg-unsplash.jpg");
+    background-image: url("../images/login.jpg");
     background-position:bottom;
     background-size: cover;
     background-repeat: no-repeat;
