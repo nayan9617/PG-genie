@@ -33,37 +33,63 @@
                     <span>Phone: +91 <%= pg.owner.phone %></span></li>
                   <li class="list-group-item">&#8377;<%= pg.price %>/month</li>
                 </ul>
-                
-                <ul class="list-group list-group-flush">
+                <ul class="list-group list-group-flush" style="list-style-type: none; padding-left: 0;">
                   <% if (((pg.furniture || pg.attachedBath )||(pg.washingMachine || pg.petFriendly))||(( pg.waterSupply || pg.geyser )|| (pg.wifi || pg.backupPower ))) { %>
-                  <div class="my-2 mx-3 p-1">
+                  <div class="my-2 mx-3">
                     <h6 class="card-text">Amenities:</h6>
                     <% if (pg.furniture) { %>
-                        <li class="card-text text-muted mx-3 my-0">Furniture</li>
+                        <li class="card-text text-muted my-1">
+                          <img src="/svgs/chair.svg">
+                          Furniture
+                        </li>
                     <% } %>
                     <% if (pg.attachedBath) { %>
-                        <li class="card-text text-muted mx-3 my-0">Attached Bathroom</li>
+                        <li class="card-text text-muted  my-1">
+                          <img src="/svgs/bathtub.svg">
+                          Attached Bathroom
+                        </li>
                     <% } %>
                     <% if (pg.waterSupply) { %>
-                        <li class="card-text text-muted mx-3 my-0">24/7 Water Supply</li>
+                        <li class="card-text text-muted  my-1">
+                          <img src="/svgs/water.svg">
+                          24/7 Water Supply
+                        </li>
                     <% } %>
                     <% if (pg.geyser) { %>
-                        <li class="card-text text-muted mx-3 my-0">Geyser / Hot Water</li>
+                        <li class="card-text text-muted  my-1">
+                          <img src="/svgs/hotwater.svg">
+                          Geyser / Hot Water
+                        </li>
                     <% } %> 
                     <% if (pg.wifi) { %>
-                        <li class="card-text text-muted mx-3 my-0">Wi-Fi</li>
+                        <li class="card-text text-muted  my-1">
+                          <img src="/svgs/wifi.svg">
+                          Wi-Fi
+                        </li>
                     <% } %>
                     <% if (pg.backupPower) { %>
-                        <li class="card-text text-muted mx-3 my-0">Backup Power (Inverter)</li>
+                        <li class="card-text text-muted  my-1">
+                          <img src="/svgs/power.svg">
+                          Backup Power (Inverter)
+                        </li>
                     <% } %>
                     <% if (pg.cctv) { %>
-                        <li class="card-text text-muted mx-3 my-0">CCTV</li>
+                        <li class="card-text text-muted my-1">
+                          <img src="/svgs/cctv.svg">
+                          CCTV
+                        </li>
                     <% } %>
                     <% if (pg.washingMachine) { %>
-                        <li class="card-text text-muted mx-3 my-0">Washing Machine</li>
+                        <li class="card-text text-muted my-1">
+                          <img src="/svgs/washingmachine.svg">
+                          Washing Machine
+                        </li>
                     <% } %>
                     <% if (pg.petFriendly) { %>
-                        <li class="card-text text-muted mx-3 my-0">Pet Friendly</li>
+                        <li class="card-text text-muted my-1">
+                          <img src="/svgs/pet.svg">
+                          Pet Friendly
+                        </li>
                     <% } %>
                   </div>
                   <% } %>
