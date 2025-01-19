@@ -19,7 +19,8 @@ const userRoutes = require('./routes/users.js');
 const PGroutes = require('./routes/PG.js');
 const reviewsRoutes = require('./routes/reviews.js');
 const MongoStore = require('connect-mongo');
-const dbUrl = process.env.DB_URL;
+// const dbUrl = process.env.DB_URL;
+const dbUrl = 'mongodb://localhost:27017/find-my-pg';
 
 mongoose.connect(dbUrl);
 
