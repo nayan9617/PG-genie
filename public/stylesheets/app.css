@@ -9,19 +9,20 @@
     height: 300px;
 }
 
-.carousel-image {
-    height: 450px; /* Default height */
+.carousel-inner {
+  height: 400px; /* Default height */
+}
+
+/* Adjust the height for smaller screens */
+@media (max-width: 768px) {
+  .carousel-inner {
+    height: 300px; /* Smaller height for tablets */
   }
-  
-  /* Adjust the height for smaller screens */
-  @media (max-width: 768px) {
-    .carousel-image {
-      height: 300px; /* Smaller height for tablets */
-    }
+}
+
+@media (max-width: 576px) {
+  .carousel-inner {
+    height: 300px; /* Smaller height for mobile phones */
+    background-position: center;
   }
-  
-  @media (max-width: 576px) {
-    .carousel-image {
-      height: 200px; /* Smaller height for mobile phones */
-    }
-  }
+}
