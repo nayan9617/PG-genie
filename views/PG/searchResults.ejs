@@ -1,16 +1,16 @@
 <% layout('layout/boilerplate') %>
 <div class="container">
     <h2 class="mb-4">Search Results for "<%= query %>"</h2>
-    <div class="row">
+    <div>
         <% if (pgResults.length > 0) { %>
             <% pgResults.forEach(pg => { %>
                 <div class="card mb-3">
                     <div class="row">
                         <div class="col-md-4">
                             <% if (pg.images.length) { %>
-                                <img crossorigin="anonymous" src="<%= pg.images[0].url %>" alt="" class="img-fluid">
+                                <img crossorigin="anonymous" src="<%= pg.images[0].url %>" alt="" class="img-fluid w-100 rounded-start-2" >
                             <% } else{ %>
-                                <img crossorigin="anonymous" src="https://res.cloudinary.com/dqwsuokwl/image/upload/v1736588613/PGBuddy/x7qlzfw6hnnqva0vo2w9.jpg" alt="" class="img-fluid"> 
+                                <img crossorigin="anonymous" src="https://res.cloudinary.com/dqwsuokwl/image/upload/v1736588613/PGBuddy/x7qlzfw6hnnqva0vo2w9.jpg" alt="" class="img-fluid w-100 rounded-start-2"> 
                             <% } %>
     
                         </div>
