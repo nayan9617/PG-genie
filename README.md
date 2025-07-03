@@ -1,7 +1,7 @@
 
-# PG Buddy
+# PG genie (v2 underdevelopment)
 
-PG Buddy is a web application designed to help users find, review, and rate paying guest (PG) accommodations. Whether you're a tenant looking for your next stay or a PG owner aiming to showcase your property, PG Buddy makes the process seamless and efficient.
+PG genie is a web application designed to help users find, review, and rate paying guest (PG) accommodations. Whether you're a tenant looking for your next stay or a PG owner aiming to showcase your property, PG genie makes the process seamless and efficient.
 
 ## Features
 
