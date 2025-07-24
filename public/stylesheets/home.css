@@ -80,7 +80,6 @@ body {
   color: #000;
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
-
 .user-avatar-container {
   position: absolute;
   top: 20px;
@@ -93,7 +92,7 @@ body {
 .user-avatar-name {
   font-size: 0.85rem;
   color: white;
-  transform: translateY(-5px); /* Moves text upward */
+  transform: translateY(-5px);
 }
 
 .user-avatar-circle {
@@ -107,4 +106,26 @@ body {
   align-items: center;
   justify-content: center;
   font-weight: bold;
+}
+
+/* 🔻 Responsive changes for small screens */
+@media (max-width: 768px) {
+  .user-avatar-container {
+    top: 10px;
+    right: 10px; /* Override right positioning */
+    left: auto; /* Reset right */
+    gap: 6px;
+    scale: 0.9; /* Slightly shrink on mobile */
+  }
+
+  .user-avatar-circle {
+    width: 28px;
+    height: 28px;
+    font-size: 0.85rem;
+  }
+
+  .user-avatar-name {
+    font-size: 0.75rem;
+    transform: translateY(-4px);
+  }
 }
