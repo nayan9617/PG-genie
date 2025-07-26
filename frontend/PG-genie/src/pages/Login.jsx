@@ -1,74 +1,89 @@
 import { useState } from "react";
+import loginImage from '../assets/PG-genie-login.jpeg';
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!email || !password) {
-      console.error("All fields are necessary to proceed!");
-    } else {
-      console.log("Form submitted", { email, password });
-    }
-  };
+const [username, setUsername] = useState("")
+const [password, setPassword] = useState("")
 
-return(
-<div className="min-h-screen w-full flex items-center justify-center bg-indigo-200 px-4">
-  <div className="bg-gradient-to-br from-indigo-400 via-purple-400 to-pink-400 p-[3px] rounded-2xl shadow-xl w-full max-w-md">    <div className="bg-white rounded-[14px] p-8 sm:p-10 md:p-12">
-      <h2 className="text-3xl font-extrabold text-center text-indigo-600">
-        Welcome Back to PG-Genie 🏠
-      </h2>
+const handleSubmit = (e) => {
+  e.preventDefault();
 
-      <form onSubmit={handleSubmit} className="space-y-6 mt-8">
-        <div className="flex flex-col gap-2 items-start">
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            Email
-          </label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="you@example.com"
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-400 text-black"
-            required
+  if(!username || !password){
+    console.error("All fields are necessary to proceed!");
+  } else{
+    console.log("Logged In successfully having username: ", username);
+  }
+}
+
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-[#ececec] px-4">
+      <div className="flex w-full max-w-4xl shadow-lg rounded-xl overflow-hidden bg-white items-center">
+        
+
+        <div className="w-1/2 hidden md:block relative">
+          <img
+            src={loginImage}
+            alt="Room"
+            className="h-full w-full object-cover"
           />
+          <div className="absolute top-3 left-9 text-[#4e3d32] drop-shadow-md text-lg font-black">
+            <p>Your journey begins with</p>
+            <p>finding the right place to stay – <em>PG Buddy</em></p>
+          </div>
         </div>
 
-        <div className="flex flex-col gap-2 items-start">
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            Password
-          </label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="••••••••"
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-400 text-black"
-            required
-          />
+
+        <div className="w-full md:w-1/2 p-10 text-black flex flex-col gap-4">
+          <h2 className="text-3xl font-bold text-center mb-6">Login</h2>
+          
+          <form 
+          onSubmit={handleSubmit}
+          className="space-y-6">
+            <div>
+              <input
+                value={username}
+                onChange={(e) => {
+                  setUsername(e.target.value)
+                }}
+                type="text"
+                id="username"
+                className="w-full mt-1 p-2 border-b-2 border-[#4e3d32] outline-none focus:border-[#4e3d32] transition-all"
+                placeholder="Username"
+              />
+            </div>
+
+            <div>
+              <input
+                value={password}
+                onChange={(e) => {
+                  setPassword(e.target.value)
+                }}
+                type="password"
+                id="password"
+                className="w-full mt-1 p-2 border-b-2 border-gray-300 outline-none focus:border-[#4e3d32] transition-all"
+                placeholder="Password"
+              />
+            </div>
+
+            <button
+              type="submit"
+              className="w-full py-2 !bg-brown-500 text-white rounded-md hover:!bg-[#453326] transition"
+            >
+              Login
+            </button>
+          </form>
+
+          <p className="text-center text-sm text-gray-600 mt-4">
+            Don’t have an account?{' '}
+            <a href="/register" className="!text-black !font-bold hover:!underline">
+              Register here
+            </a>
+          </p>
         </div>
-
-        <button
-          type="submit"
-          className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2.5 rounded-lg transition duration-300"
-        >
-          Log In
-        </button>
-      </form>
-
-      <p className="text-center text-sm text-gray-600 mt-6">
-        Don’t have an account?{" "}
-        <a
-          href="/signup"
-          className="text-indigo-600 hover:underline font-medium"
-        >
-          Sign up
-        </a>
-      </p>
+      </div>
     </div>
-  </div>
-</div>
-)}
+  );
+};
 
-export default Login
+export default Login;
